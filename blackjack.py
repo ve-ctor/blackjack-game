@@ -62,11 +62,28 @@ class Deck:
 
         self.Deck = deck
 
+    def GetCards(self):
+        return self.Deck
+
+    def DealCard(self, numCards):
+        cards = self.Deck[:numCards]
+        self.Deck = self.Deck[numCards:]
+        print("\n\nNEW DECK")
+        for card in self.Deck:
+            print(card.GetName())
+        print("CARDSGHUF DS")
+        for card in cards:
+            print(card.GetName())
+        return cards
+
     def Shuffle(self):
         random.shuffle(self.Deck)
         return self.Deck
 
 # testing code
 
-for c in Game().Deck.Shuffle():
+p = Game()
+for c in p.Deck.Shuffle():
     print(c.GetName())
+    
+p.Deck.DealCard(2)
