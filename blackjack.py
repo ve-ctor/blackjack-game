@@ -10,7 +10,7 @@ class Game:
     def __init__(self):
         self.AI = Player("Alana")
         self.Player = None
-        self.Deck = Deck()
+        self.GameDeck = Deck()
 
     def ClearOutput(self):
         # If you literally can't understand this function from the name I have nothing to say to you
@@ -35,6 +35,9 @@ class Player:
         self.PlayerName = pName
         self.Score = score
         self.Hand = hand
+
+    def GetAttribute(self):
+        return self.PlayerName
 
 class PlayingCard:
     # No explanation needed
@@ -63,20 +66,17 @@ class Deck:
         self.Deck = deck
 
     def GetCards(self):
+        # Returns the deck of cards.
         return self.Deck
 
     def DealCard(self, numCards):
+        # Deals numCards cards to players. I swear if you pass a floating point value through numCards i will personally come to find you and hunt you down
         cards = self.Deck[:numCards]
         self.Deck = self.Deck[numCards:]
-        print("\n\nNEW DECK")
-        for card in self.Deck:
-            print(card.GetName())
-        print("CARDSGHUF DS")
-        for card in cards:
-            print(card.GetName())
         return cards
 
     def Shuffle(self):
+        # Gee I wonder what this function does
         random.shuffle(self.Deck)
         return self.Deck
 
